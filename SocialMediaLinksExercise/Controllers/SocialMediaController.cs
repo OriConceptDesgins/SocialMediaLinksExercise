@@ -17,6 +17,10 @@ namespace SocialMediaLinksExercise.Controllers
         [Route("/")]
         public IActionResult Index()
         {
+            if(Request.Method != "GET") 
+            {
+                return BadRequest("I don't want you to send a POST request here so this request is very very bad , bye");
+            }
             ViewBag.env = _env.EnvironmentName;
             Links links = new Links();
             _configurations.GetSection("SocialMediaLinks").Bind(links);
