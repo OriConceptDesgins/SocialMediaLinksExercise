@@ -1,0 +1,37 @@
+﻿
+@model SocialMediaLinksExercise.Models.Links
+
+<div>
+
+
+    <div class="container-fluid mb-1"><span class="badge bg-info">@ViewBag.env environment</span></div>
+
+    <div class="container-fluid">
+            <ul class="pagination">
+
+    @foreach (var property in typeof(SocialMediaLinksExercise.Models.Links
+    ).GetProperties())
+    {
+        
+                
+            
+        @if (property.Name == "Instagram")
+        {
+            <environment exclude="Development">
+                <li class="page-item">
+                    <a class="page-link" href=@property.GetValue(Model)>@property.Name</a>
+                </li>
+            </environment>
+        }
+        else
+        {
+            <li class="page-item">
+                <a class="page-link" href=@property.GetValue(Model)>@property.Name</a>
+            </li>
+        }
+         
+    }
+        </ul>
+    </div>
+
+</div>
